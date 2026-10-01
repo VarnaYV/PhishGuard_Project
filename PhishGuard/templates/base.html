@@ -1,0 +1,7 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PhishGuard — AI-Powered URL Threat Analysis</title><link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"></head>
+<body><header><div class="brand"><span class="logo">&#9670;</span><div><b>PHISHGUARD</b><small>AI-POWERED URL THREAT ANALYSIS</small></div></div>
+<nav><a href="/">Dashboard</a><a href="/#scanner">URL Scanner</a><a href="/history">Analysis History</a><a href="/insights">Model Insights</a><a href="/about">About</a></nav></header>
+<main>{% block content %}{% endblock %}</main>
+<footer>PhishGuard analyses URL strings only and never visits them. Results are model estimates, not guarantees of safety.</footer>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script></body></html>

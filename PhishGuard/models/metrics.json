@@ -1,0 +1,96 @@
+{
+  "best_model": "Random Forest",
+  "results": {
+    "Logistic Regression": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "confusion_matrix": [
+        [
+          60,
+          0
+        ],
+        [
+          0,
+          60
+        ]
+      ]
+    },
+    "Decision Tree": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "confusion_matrix": [
+        [
+          60,
+          0
+        ],
+        [
+          0,
+          60
+        ]
+      ]
+    },
+    "Random Forest": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "confusion_matrix": [
+        [
+          60,
+          0
+        ],
+        [
+          0,
+          60
+        ]
+      ]
+    }
+  },
+  "feature_importance": {
+    "keyword_count": 0.26585189938236603,
+    "domain_length": 0.1641725951320521,
+    "domain_has_digits": 0.11082487174691619,
+    "domain_hyphens": 0.0880957712230367,
+    "hostname_length": 0.07706111878158295,
+    "url_length": 0.05074142943795805,
+    "num_hyphens": 0.03863520126627218,
+    "suspicious_tld": 0.03684335181666878,
+    "is_ip_host": 0.028225942722076736,
+    "num_slashes": 0.018851604476033665,
+    "num_subdomains": 0.018424730876388525,
+    "num_digits": 0.01725962887945138,
+    "digit_ratio": 0.016897061691447706,
+    "path_length": 0.014330592949422726,
+    "num_dots": 0.013015934891952404,
+    "num_subdirs": 0.011041925424218911,
+    "num_query_params": 0.009454574086298396,
+    "has_ampersand": 0.0060991535802490575,
+    "num_special_chars": 0.006026545865312287,
+    "query_length": 0.004102553651639928,
+    "num_underscores": 0.0021007175229904294,
+    "has_equals": 0.001606381821470781,
+    "is_https": 0.0002719331556684899,
+    "entropy": 6.447961852566605e-05,
+    "fragment_length": 0.0,
+    "has_at": 0.0,
+    "has_double_slash_in_path": 0.0,
+    "has_percent": 0.0,
+    "is_shortener": 0.0,
+    "nonstandard_port": 0.0
+  },
+  "n_train": 480,
+  "n_test": 120
+}

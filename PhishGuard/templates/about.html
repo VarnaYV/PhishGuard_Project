@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block content %}<section class="panel"><h2>ABOUT PHISHGUARD</h2>
+<h3>What is phishing?</h3><p>Phishing tricks people into revealing credentials or payment data via look-alike websites, usually delivered by links.</p>
+<h3>How phishing URLs work</h3><p>Attackers use long or deceptive domains, extra subdomains, brand names, IP hosts, unusual TLDs and urgency keywords to appear legitimate.</p>
+<h3>How machine learning helps</h3><p>A classifier learns statistical patterns from lexical and structural URL features, generalising to URLs not seen before.</p>
+<h3>How PhishGuard analyses URLs</h3><p>URL string → parse → 30 features → ML probability → rule-based indicators → combined risk score (0.6·ML + 0.4·heuristics) → feature-based explanation. The URL is never visited.</p>
+<h3>Limitations</h3><p>Lexical analysis cannot see page content, domain age or reputation. Legitimate but unusual URLs may be flagged, and well-crafted phishing URLs may be missed.</p>
+<h3>Responsible use</h3><p>This is a defensive, educational tool. Never treat any result as a guarantee of safety.</p></section>{% endblock %}

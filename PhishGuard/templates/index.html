@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% block content %}
+<section class="panel scanner" id="scanner"><h2>URL THREAT SCANNER</h2><p class="muted">Enter a URL to perform security analysis</p>
+{% if not model_ready %}<div class="alert warn">Model not trained yet.<br>Please run: <code>notebooks/PhishGuard_ML_Training.ipynb</code> (or <code>python train.py</code>)</div>{% endif %}
+{% if error %}<div class="alert danger">{{ error }}</div>{% endif %}
+<form method="post" action="/scan"><input name="url" placeholder="https://example.com/login" autocomplete="off" required><button id="go">ANALYZE URL</button></form></section>
+<section class="cards">
+<div class="card"><span>Total URLs Analyzed</span><b>{{ s.total }}</b></div>
+<div class="card danger"><span>Phishing Detected</span><b>{{ s.danger }}</b></div>
+<div class="card warn"><span>Suspicious URLs</span><b>{{ s.warn }}</b></div>
+<div class="card safe"><span>Likely Legitimate</span><b>{{ s.safe }}</b></div>
+<div class="card"><span>Test Accuracy*</span><b>{{ s.acc or '—' }}</b></div></section>
+{% if s.total %}<section class="panel"><h3>RISK DISTRIBUTION</h3>
+{% for k,l in [('safe','Legitimate'),('warn','Suspicious'),('danger','Phishing')] %}<div class="bar"><span>{{ l }}</span><i class="{{k}}" style="width:{{ (s[k]/s.total*100)|round }}%"></i><em>{{ s[k] }}</em></div>{% endfor %}</section>{% endif %}
+<p class="muted small">*Accuracy on the held-out test split of whichever dataset the model was trained on. See Model Insights.</p>{% endblock %}

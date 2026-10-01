@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block content %}<section class="panel"><h2>MODEL INSIGHTS</h2>
+{% if not m %}<div class="alert warn">No metrics yet. Run the training notebook or <code>python train.py</code>.</div>{% else %}
+<p>Best model: <b>{{ m.best_model }}</b> · train {{ m.n_train }} / test {{ m.n_test }} URLs (values below are computed from the last training run).</p>
+<table><tr><th>Model</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1</th><th>FPR</th><th>FNR</th></tr>
+{% for n,x in m.results.items() %}<tr><td>{{ n }}</td>{% for k in ['accuracy','precision','recall','f1','fpr','fnr'] %}<td>{{ '%.3f'|format(x[k]) }}</td>{% endfor %}</tr>{% endfor %}</table>
+<h3>Feature importance (Random Forest)</h3>{% set mx = m.feature_importance.values()|max %}{% for k,v in (m.feature_importance.items()|list)[:12] %}<div class="bar"><span>{{ k }}</span><i class="info" style="width:{{ (v/mx*100)|round }}%"></i><em>{{ '%.3f'|format(v) }}</em></div>{% endfor %}{% endif %}</section>{% endblock %}

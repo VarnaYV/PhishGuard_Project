@@ -1,0 +1,2 @@
+# ML methodology
+Dataset (url,label; 0/1) → de-duplicate → extract 30 features → stratified 80/20 split (seed 42) → train LR (scaled), Decision Tree, Random Forest, optional XGBoost → evaluate on the held-out test set only (accuracy, precision, recall, F1, ROC-AUC, FPR, FNR, confusion matrix) → save the best by F1 (ties: recall, then Random Forest). Leakage controls: duplicates removed, no label-derived features, split before fitting, training-only medians. Metrics are stored in `models/metrics.json` after each run.

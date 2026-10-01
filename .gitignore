@@ -1,0 +1,17 @@
+# Python environments and bytecode
+venv/
+PhishGuard/venv/
+__pycache__/
+*.py[cod]
+
+# Local runtime data and logs
+*.log
+PhishGuard/reports/history.db
+
+# Local workspace metadata
+.sf/
+.vscode/
+.idea/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/

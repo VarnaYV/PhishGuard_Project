@@ -1,0 +1,2 @@
+# Features
+See `FEATURE_NAMES` in `src/feature_extraction.py`: length features (URL/host/path/query/fragment), character counts (dots, slashes, hyphens, underscores, digits, specials), structure (subdomains, subdirectories, query params), flags (@, //, %, =, &, IP host, HTTPS, suspicious TLD, shortener, non-standard port), domain features (length, digits, hyphens), keyword count (20 keywords, combined with other features), entropy and digit ratio. TLD, shortener and keyword lists are configurable at the top of that file.

@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block content %}<section class="panel"><h2>ANALYSIS HISTORY</h2>
+<table><tr><th>Timestamp</th><th>URL</th><th>Verdict</th><th>Risk</th><th>Confidence</th></tr>
+{% for r in rows %}<tr><td>{{ r[0] }}</td><td class="wrap">{{ r[1] }}</td><td class="{{ r[3] }}">{{ r[2] }}</td><td>{{ r[4] }}</td><td>{{ r[5] }}%</td></tr>{% else %}<tr><td colspan="5">No scans yet.</td></tr>{% endfor %}</table>
+<p class="muted small">Stored locally in reports/history.db only.</p></section>{% endblock %}

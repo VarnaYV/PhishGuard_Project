@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% block content %}
+<section class="panel verdict {{ r.cls }}"><small>THREAT ANALYSIS</small><div class="url">{{ r.url }}</div>
+<h1>{{ r.level }} — {{ r.verdict }}</h1>
+<div class="metrics"><div><span>RISK SCORE</span><b>{{ r.score }}/100</b></div><div><span>ML PREDICTION</span><b>{{ r.ml_label }}</b></div>
+<div><span>MODEL PROBABILITY (phishing)</span><b>{{ r.prob }}%</b></div><div><span>CONFIDENCE</span><b>{{ r.confidence }}% · {{ r.confidence_level }}</b></div></div>
+<div class="gauge"><i style="width:{{ r.score }}%"></i></div></section>
+{% if r.disagreement %}<div class="alert warn">The ML model and the rule-based indicators disagree (ML {{ r.prob }}% vs heuristic {{ r.heuristic }}/100). Treat this result with extra caution.</div>{% endif %}
+<div class="grid2"><section class="panel"><h3>SECURITY OVERVIEW</h3>{% for c in r.checks %}<div class="row"><span>{{ c.name }}</span><b class="{{ 'safe' if c.pass else 'danger' }}">{{ 'PASS' if c.pass else 'FLAG' }}</b></div>{% endfor %}</section>
+<section class="panel"><h3>{{ 'WHY WAS THIS URL FLAGGED?' if r.score > 30 else 'WHY DOES THIS URL APPEAR LOW RISK?' }}</h3>
+{% if r.risk_factors %}<ol>{% for f in r.risk_factors %}<li>{{ f }}</li>{% endfor %}</ol>{% else %}<p>No rule-based risk indicators triggered.</p>{% endif %}
+<h4>Top model feature contributions</h4><p class="muted small">Change in phishing probability vs. a typical URL (+ raises risk, − lowers it).</p>
+{% for c in r.contrib %}<div class="row"><span>{{ c.feature }} = {{ c.value }}</span><b class="{{ 'danger' if c.impact>0 else 'safe' }}">{{ '%+.1f'|format(c.impact) }} pts</b></div>{% endfor %}</section></div>
+<section class="panel"><h3>SECURITY REPORT</h3><div class="row"><span>Domain</span><b>{{ r.domain }}</b></div><div class="row"><span>Protocol</span><b>{{ r.protocol }}</b></div>
+<div class="row"><span>TLD</span><b>{{ r.tld or 'n/a' }}</b></div><div class="row"><span>Model</span><b>{{ r.model_name }}</b></div>
+<details><summary>All extracted features</summary>{% for k,v in r.features.items() %}<div class="row"><span>{{ k }}</span><b>{{ v }}</b></div>{% endfor %}</details>
+<h3>RECOMMENDATION</h3><p>{% if r.score>60 %}Do not open this link or enter credentials, payment or personal information.{% elif r.score>30 %}Proceed with caution; verify the sender and the domain independently.{% else %}No strong risk indicators found, but no URL can be guaranteed safe. Stay alert.{% endif %}</p>
+<p class="muted small">Probability is the model's estimate, not proof of real-world maliciousness.</p>
+<button onclick="window.print()">PRINT / SAVE AS PDF</button> <a class="btn" href="/">NEW SCAN</a></section>{% endblock %}
